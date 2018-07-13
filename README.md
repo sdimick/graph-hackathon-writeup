@@ -1,11 +1,11 @@
 # Hackathon Graph Recommendations
 
-How we built a graph model for product recommendations in two days.
+__*How we built a graph model for product recommendations in two days.*__
 
 ![](https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/b58cda1c0a65bb3c0c633a070be268cc)  
   
-Author: Seth Dimick  
-The Team: Jim Liu, Aaron Flower, Ola Hungerford, Thomas Fritchman, Fan Tu
+__Author:__ *Seth Dimick*  
+__The Team:__ *Jim Liu, Aaron Flower, Ola Hungerford, Thomas Fritchman, Fan Tu*
 
 ## The Idea
 
@@ -29,11 +29,11 @@ A Markov chain model was then created by relating Product nodes to each other wi
   
 <p align="center"><b>Schema with Data</b></p>
 
-<p align="center">![](https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/0749e57fcb316326e875d9f33b9ea9d0)</p>
+<p align="center"><img src="https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/0749e57fcb316326e875d9f33b9ea9d0"></p>
 
 ## The Data
 
-Our graph model for the hackathon was derived from two tables of snowplow clickstream data in the [Customer Analytics Redshift](https://confluence.nordstrom.net/display/TDS/CA-+Redshift+%3A+Data+Sets+Documentation) database: `clk_strm_sp.sp_product_views` and `clk_strm_sp.sp_order_items`. To transform these relational tables into a directional graph, the Product Views table is joined to itself, by shopper and session, to create a relationship between each of shoppers' page views and next sequential page view for all adult men's shoes. The data was transformed and saved to s3 with some simple [ETL code](https://gitlab.nordstrom.com/hack/Summer2018/graphathon/tree/master/etl), and then loaded into neo4j by the cypher (*graph query language*) [load script](https://gitlab.nordstrom.com/hack/Summer2018/graphathon/blob/master/cypher/dataload.cypher).  
+Our graph model for the hackathon was derived from two tables of snowplow clickstream data for *product views* and *order items*. To transform these relational tables into a directional graph, the Product Views table is joined to itself, by shopper and session, to create a relationship between each of shoppers' page views and next sequential page view for all adult men's shoes. The data was transformed and saved to s3 with some simple ETL code, and then loaded into neo4j by the Cypher (*graph query language*) load script.  
   
 The data source for our recommendation queries is also notable. If taken to production, graph recommendations will be the first consumer of Personalization's __*real-time*__ serverless streaming data pipeline that was built to populate the recently viewed products tray. Our graph-based recommendation strategies (*cypher queries*) are parameterized by this real-time data to provide personalized recommendations based on shoppers' __*in-session clickstream events*__ leading up to and including the current product page view.
 
