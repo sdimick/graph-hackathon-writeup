@@ -19,7 +19,7 @@ For our project, we designed a graph that leveraged both the well-documented pro
   
 <p align="center"><b>Basic Schema</b></p>
 
-<p align="center">![](https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/ec57944c9dc032ed6796d5c08a386fde)</p> 
+<p align="center"><img src="https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/ec57944c9dc032ed6796d5c08a386fde"></p> 
   
 __Product nodes__ (*green*) represent all adult male shoe Style IDs viewed in the past 30 days. The Product nodes are shared by the property graph of shopper views and purchases and the Markov chain of shoppers' next product view transitions.  
   
