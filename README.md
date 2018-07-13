@@ -17,7 +17,8 @@ To expand upon this proven success our [Summer 2018 Hackathon](https://confluenc
 
 For our project, we designed a graph that leveraged both the well-documented property graph method and the proven Markov chain method from the Homepage. The result is a schema with three types of nodes and three types of relationships.  
   
-<p align="center"><b>Basic Schema</b></p>  
+<p align="center"><b>Basic Schema</b></p>
+
 ![](https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/ec57944c9dc032ed6796d5c08a386fde)  
   
 __Product nodes__ (*green*) represent all adult male shoe Style IDs viewed in the past 30 days. The Product nodes are shared by the property graph of shopper views and purchases and the Markov chain of shoppers' next product view transitions.  
@@ -26,7 +27,8 @@ The property graph functionality is enabled by relating Product nodes to the __S
   
 A Markov chain model was then created by relating Product nodes to each other with an intermediary __NextView node__ (*purple*). The NextView nodes have shopper and session information and connect to Product nodes with __NEXT__ edges. Counting relevant NextView nodes provides the "probabilities" of a shopper transitioning from one product view to another. (*The intermediary NextView nodes are not theoretically necessary, as shopper and session information could be attributed to the NEXT edges, but the nodes were added to the schema to increase query performance when filtering the Markov chain by shopper attributes and counting the number of relationships.*)  
   
-<p align="center"><b>Schema with Data</b></p>  
+<p align="center"><b>Schema with Data</b></p>
+
 ![](https://s3-us-west-2.amazonaws.com/knowledge-repo/2018-07-05/Hackathon-Graph-Recommendations/0749e57fcb316326e875d9f33b9ea9d0)
 
 ## The Data
